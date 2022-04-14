@@ -22,5 +22,5 @@ matplotlib.__file__
 
 
 ## 3. 이미지 resize하는법
-1. `python resize.py`를 실행합니다.
-2. 기본 크기는 weight=1024, height=1024로 설정해두었습니다. main에서 바꿀 수 있게 해두었습니다.
+1. `python resize.py`를 실행하시면 `reTraining`, `reValidation` 디렉토리에 `resize`된 크기로 이미지가 생성됩니다.
+2. 기본 크기는 `weight=1024, height=1024`로 설정해두었습니다. main부분에서 바꾸 실 수 있습니다.
