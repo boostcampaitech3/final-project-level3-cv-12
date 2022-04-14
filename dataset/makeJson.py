@@ -67,8 +67,7 @@ def make_json():
                             'bbox':[xmin, ymin, ann_w, ann_h],
                             'area' : ann_w * ann_h,
                             'category_id':_id,
-                            'is_crowd' : 0,
-                            'segmentation' : 0
+                            'iscrowd' : 0,
                         })
         jsons[data_type] = temp_json
     
