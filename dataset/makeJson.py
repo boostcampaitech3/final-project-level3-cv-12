@@ -29,7 +29,7 @@ def make_json():
 
         # images, annotations
         ann_id = 0
-        for label_folder in tqdm(label_folders):
+        for _id, label_folder in tqdm(enumerate(label_folders), total=len(label_folders)):
             label_files = sorted(glob(label_folder + '/*'))
             for label_file in label_files:
                 if 'meta' in label_file:
@@ -66,7 +66,7 @@ def make_json():
                             'image_id' : img_id,
                             'bbox':[xmin, ymin, ann_w, ann_h],
                             'area' : ann_w * ann_h,
-                            'category_id':item_no,
+                            'category_id':_id,
                             'is_crowd' : 0,
                             'segmentation' : 0
                         })
