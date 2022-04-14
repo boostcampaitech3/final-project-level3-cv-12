@@ -1,4 +1,6 @@
 */Training/*
 */Validation/*
+*/reTraining/*
+*/reValidation/*
 !*/Training/.gitkeep
 !*/Validation/.gitkeep

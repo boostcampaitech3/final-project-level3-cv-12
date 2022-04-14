@@ -85,6 +85,14 @@ def parse_args():
         default='none',
         help='job launcher')
     parser.add_argument('--local_rank', type=int, default=0)
+    ##########################추가 args##################################
+    # wandb 실험이름용
+    parser.add_argument('--wandb_exp', type=str)
+    # 유저
+    parser.add_argument('--user_name', type=str)
+    # epoch 변경
+    parser.add_argument('--epochs', type=int)
+    #####################################################################
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
@@ -104,7 +112,24 @@ def main():
     args = parse_args()
 
     cfg = Config.fromfile(args.config)
+    ##########################코드추가##################################
+    ## epoch 변경
+    cfg.runner.max_epochs = args.epochs
 
+    ## wandb 
+    cfg.log_config = dict(
+    interval=50,
+    hooks=[
+        dict(type='TextLoggerHook'),
+        dict(type='WandbLoggerHook',
+                init_kwargs = dict(project='라면',
+                                    entity='yolo12',
+                                    name = f'{args.user_name}_{args.wandb_exp}',
+                                    config = dict(cfg)
+        ) 
+        )
+    ])
+    #####################################################################
     # update data root according to MMDET_DATASETS
     update_data_root(cfg)
 
@@ -175,7 +200,7 @@ def main():
     meta['config'] = cfg.pretty_text
     # log some basic info
     logger.info(f'Distributed training: {distributed}')
-    logger.info(f'Config:\n{cfg.pretty_text}')
+    # logger.info(f'Config:\n{cfg.pretty_text}')
 
     # set random seeds
     seed = init_random_seed(args.seed)
