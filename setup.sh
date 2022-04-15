@@ -7,3 +7,4 @@ cd mmdetection
 pip install -r requirements/build.txt
 pip install -v -e .
 pip install -r requirements/albu.txt
+python -c "import torch; print('=======================gpu check=======================\n', torch.cuda.is_available())"
