@@ -61,6 +61,9 @@ def make_json():
                         ymax = float(bbox.find('ymax').text)
                         ann_w = xmax-xmin
                         ann_h = ymax-ymin
+                        if ann_w == 0 or ann_h == 0:
+                            ann_id -= 1
+                            continue
                         temp_json['annotations'].append({
                             'id' : ann_id,
                             'image_id' : img_id,

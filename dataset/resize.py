@@ -79,8 +79,6 @@ def resize(df, re_width=1024, re_height=1024):
         os.makedirs('re'+'/'.join(img_path.split('/')[:-1]), exist_ok=True)
         cv2.imwrite('re'+img_path, re_img)
 
-
-
     re_df['area'] = re_df['bbox'].apply(lambda x: round(x[2]*x[3], 2))
 
     return re_df
