@@ -16,7 +16,12 @@ matplotlib.__file__
 2. `install_font.sh`에 들어가서 7번째 line의 두번째 path를 본인 상황에 맞게 수정해준다
 3. `sh install_font.sh`를 실행한다.
 4. EDA.ipynb를 restart 후 사용한다.
-
+또는
+```python
+import matplotlib.pyplot as plt
+plt.rc('font', family='NanumGothicCoding')
+```
+을 코드 앞부분에 추가한다.
 <br>
 <br>
 
