@@ -1,5 +1,5 @@
 # import matplotlib
-# matplotlib.__file__로 본인 matplotlib 경로 확인해고 
+# matplotlib.__file__로 본인 matplotlib 경로 확인하고 
 # 7 line 두번째 path 수정해야 정상작동함
 
 apt-get install fonts-nanum*

@@ -4,3 +4,7 @@
 */reValidation/*
 !*/Training/.gitkeep
 !*/Validation/.gitkeep
+*/wandb/
+*/workdirs/
+*/.ipynb_checkpoints/
+*/Test

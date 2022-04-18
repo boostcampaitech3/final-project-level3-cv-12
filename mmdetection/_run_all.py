@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
 
     ## params
-    config_file= 'configs_custom/sparse_rcnn/sparse_rcnn_r50_fpn_1x_coco.py'
+    config_file= 'configs_hongrok/sparse_rcnn/sparse_rcnn_r50_fpn_1x_coco.py'
     basename = osp.basename(config_file).split('.')[0]
     work_dir=f'work_dirs/{basename}/' # 학습결과가 저장될 폴더
     user_name='hongrok' # wandb에 올라갈 실험한 유저이름
