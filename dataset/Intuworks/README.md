@@ -1,6 +1,7 @@
 ## 1. json파일 만드는 법
 1. Intuworks 데이터 셋 중 `dataset6_myeon`을 다운받아 압축을 풀어줍니다.
-2. `python makeJSon.py`를 실행하면 `train.json` 파일이 생성됩니다.
+2. `makeJSon.py` 파일에서 `label_folders`를 label 폴더 경로에 맞게 수정해줍니다.
+3. `python makeJSon.py`를 실행하면 `train.json` 파일이 생성됩니다.
 
 <br>
 <br>
