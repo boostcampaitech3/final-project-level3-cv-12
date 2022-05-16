@@ -32,8 +32,18 @@ python train.py --weights {pretraiend된 wieght 파일} --data ramen.yaml --hyp 
 ```
 python detect.py --weights {best weight 파일} --source {test dataset 위치} --imgsz 1024 --data trash.yaml --conf-thres 0.08 --iou-thres 0.5 --name {폴더명} --save-txt --save-conf
 ```
+<br>
+
+### 3) 데이터 구조
+
+train/data,label
+
+valid/data,label
+<br>
+ramen.yaml 참고
 
 ```bash
+
 train
 ├── data
 │   ├── 0001.jpg
@@ -45,6 +55,7 @@ train
 │   ├── 0002.txt
 │   ├── 0003.txt
 │   └── ...
+
 valid
 ├── data
 │   ├── 0001.jpg
