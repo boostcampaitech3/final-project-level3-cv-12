@@ -30,7 +30,7 @@ python train.py --weights {pretraiend된 wieght 파일} --data ramen.yaml --hyp 
 ### 2) detect.py
 
 ```
-python detect.py --weights {best weight 파일} --source {test dataset 위치} --imgsz 1024 --data trash.yaml --conf-thres 0.08 --iou-thres 0.5 --name {폴더명} --save-txt --save-conf
+python detect.py --weights {best weight 파일} --source {test dataset 위치} --imgsz 1024 --data ramen.yaml --conf-thres 0.08 --iou-thres 0.5 --name {폴더명} --save-txt --save-conf
 ```
 <br>
 
