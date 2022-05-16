@@ -38,6 +38,8 @@ python detect.py --weights {best weight 파일} --source {test dataset 위치} -
 
 ### 3) 데이터 구조
 
+- yolo format normalized[x_center,y_center,width,height]  
+
 train/data,label
 valid/data,label
 <br>
