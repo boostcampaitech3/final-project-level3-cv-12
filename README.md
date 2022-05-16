@@ -24,6 +24,8 @@ pip install -r requirements.txt
 python train.py --weights {pretraiend된 wieght 파일} --data ramen.yaml --hyp {argument file(hyp.p6.yaml)} --epochs 80 --batch_size 12 --img_size 1024 --project {wandb project 명}
 ```
 - [pretrained 파일](https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5x6.pt)
+- yolov5/data/ramen.yaml
+- yolov5/data/hyps/hyp.p6.yaml
 
 <br>
 
@@ -37,36 +39,36 @@ python detect.py --weights {best weight 파일} --source {test dataset 위치} -
 ### 3) 데이터 구조
 
 train/data,label
-
 valid/data,label
 <br>
 ramen.yaml 참고
 
 ```bash
-
-train
+data
 ├── data
-│   ├── 0001.jpg
-│   ├── 0002.jpg
-│   ├── 0003.jpg
-│   └── ...
-├── label
-│   ├── 0001.txt
-│   ├── 0002.txt
-│   ├── 0003.txt
-│   └── ...
 
-valid
-├── data
-│   ├── 0001.jpg
-│   ├── 0002.jpg
-│   ├── 0003.jpg
-│   └── ...
-├── label
-│   ├── 0001.txt
-│   ├── 0002.txt
-│   ├── 0003.txt
-│   └── ...
+├── train
+│   ├── data
+│   │   ├── 0001.jpg
+│   │   ├── 0002.jpg
+│   │   ├── 0003.jpg
+│   │   └── ...
+│   ├── label
+│   │   ├── 0001.txt
+│   │   ├── 0002.txt
+│   │   ├── 0003.txt
+│   │   └── ...
+├── valid
+│   ├── data
+│   │   ├── 0001.jpg
+│   │   ├── 0002.jpg
+│   │   ├── 0003.jpg
+│   │   └── ...
+│   ├── label
+│   │   ├── 0001.txt
+│   │   ├── 0002.txt
+│   │   ├── 0003.txt
+│   │   └── ...
 
 ``` 
 
