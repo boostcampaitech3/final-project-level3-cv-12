@@ -16,14 +16,12 @@ def get_diff(img1, img2, gray1, gray2):
     
     cnts = cv2.findContours(opening.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
-    coors = []
+    bboxes = []
     for c in cnts:
         (x, y, w, h) = cv2.boundingRect(c)
-        # cv2.rectangle(img1, (x, y), (x + w, y + h), (0, 0, 255), 10)
-        # cv2.rectangle(img2, (x, y), (x + w, y + h), (0, 0, 255), 10)
-        coors.append((x, y, w, h))
+        bboxes.append((x, y, w, h))
 
-    return coors
+    return bboxes
 
 
 def detectChange(before_img, after_img):
@@ -31,4 +29,6 @@ def detectChange(before_img, after_img):
     before_gray = cv2.cvtColor(before_img, cv2.COLOR_RGB2GRAY)
     after_gray = cv2.cvtColor(after_img, cv2.COLOR_RGB2GRAY)
 
-    coors = get_diff(before_img, after_img, before_gray, after_gray)
+    bboxes = get_diff(before_img, after_img, before_gray, after_gray)
+    
+    return bboxes
