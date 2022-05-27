@@ -8,3 +8,6 @@
 */workdirs/
 */.ipynb_checkpoints/
 */Test
+
+weights
+!weights/.gitkeep

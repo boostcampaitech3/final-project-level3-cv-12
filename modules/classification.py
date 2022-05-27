@@ -45,7 +45,7 @@ class Classifier():
         self.model.fc = torch.nn.Linear(512, 158)
         self.model = self.model.to(self.DEVICE)
 
-        model_path = '/opt/ml/project/final-project-level3-cv-12/dataset/models/classification_all.pth'
+        model_path = '/opt/ml/project/final-project-level3-cv-12/weights/classification_all.pth'
         ckpt = torch.load(model_path, map_location=self.DEVICE)
         state_dict = ckpt.state_dict()
         self.model.load_state_dict(state_dict)

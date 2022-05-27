@@ -22,21 +22,24 @@ class outDetector():
         self.model = self.model.to(self.DEVICE)
 
 
-        model_path = '/opt/ml/project/final-project-level3-cv-12/dataset/outputs/depth_008_9122.pth'
+        model_path = '/opt/ml/project/final-project-level3-cv-12/weights/outDetector.pth'
         ckpt = torch.load(model_path, map_location=self.DEVICE)
         self.model.load_state_dict(ckpt)
 
 
-    def predict(self, img, bbox):
-        
-        (x, y, w, h) = bbox
-        cropped = img[y:y+h, x:x+w]
-        cropped = self.test_transform(image=cropped)['image']
-        if len(cropped.shape) == 3:
-            cropped = cropped.unsqueeze(0)
-        cropped = cropped.to(self.DEVICE)
+    def predict(self, img, bboxes):
+        preds = []
+        for bbox in bboxes:
+            (x, y, w, h) = bbox
+            cropped = img[y:y+h, x:x+w]
+            cropped = self.test_transform(image=cropped)['image']
+            if len(cropped.shape) == 3:
+                cropped = cropped.unsqueeze(0)
+            cropped = cropped.to(self.DEVICE)
 
-        pred = self.model(cropped)
-        pred = pred.argmax(dim=-1)
+            pred = self.model(cropped)
+            pred = pred.argmax(dim=-1)
+            pred = pred.detach().cpu()
+            preds.append(pred)
         
-        return pred.detach().cpu()
+        return preds
