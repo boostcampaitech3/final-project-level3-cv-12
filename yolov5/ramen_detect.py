@@ -8,15 +8,14 @@ from pathlib import Path
 
 def ramen_detect(img_source):
     weights = "/opt/ml/project/final-project-level3-cv-12/yolov5/ramen/test/weights/best.pt"
-    device = torch.device("cuda:0")
+    device = torch.device("cpu")
     data = "/opt/ml/project/final-project-level3-cv-12/yolov5/data/ramen.yaml"
     model = DetectMultiBackend(weights, device=device, dnn=False, data=data, fp16=False)
     stride, names, pt = model.stride, model.names, model.pt
 
     imgsz = check_img_size((1024,1024), s=stride)
 
-    source = "/opt/ml/project/final-project-level3-cv-12/yolov5/KakaoTalk_20220516_193809451_02.jpg"
-    dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=pt)
+    dataset = LoadImages(img_source, img_size=imgsz, stride=stride, auto=pt)
     
     for path, im, im0s, vid_cap, s in dataset:
 
