@@ -45,14 +45,14 @@ class Classifier():
         self.model.fc = torch.nn.Linear(512, 158)
         self.model = self.model.to(self.DEVICE)
 
-        model_path = '/opt/ml/final-project-level3-cv-12/dataset/models/classification_all.pth'
+        model_path = '/opt/ml/project/final-project-level3-cv-12/dataset/models/classification_all.pth'
         ckpt = torch.load(model_path, map_location=self.DEVICE)
         state_dict = ckpt.state_dict()
         self.model.load_state_dict(state_dict)
     
 
     def get_label(self, img, bboxes):
-        cate_json = '/opt/ml/final-project-level3-cv-12/dataset/annotations/instances_Validation.json'
+        cate_json = '/opt/ml/project/final-project-level3-cv-12/dataset/annotations/instances_Validation.json'
         test_coco = COCO(cate_json)
         categories = test_coco.dataset['categories']
 
