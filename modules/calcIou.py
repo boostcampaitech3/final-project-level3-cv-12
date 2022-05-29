@@ -28,20 +28,15 @@ def CalIou(all_box,change_box,size):
         new_all_box.append([i[0],xmin,ymin,xmax,ymax,i[5]])
 
     for i in change_box:
-        xc,yc,w,h = float(i[1]) * size , float(i[2]) * size ,float(i[3]) * size , float(i[4]) * size
-        xmin = xc- w /2
-        ymin = yc - h /2
-        xmax = w + xmin
-        ymax = h + ymin
-        xmin , ymin , xmax, ymax = round(xmin,6),round(ymin,6),round(xmax,6),round(ymax,6)
-        new_change_box.append([i[0],xmin,ymin,xmax,ymax,i[5]])
+        xmin,ymin,xmax,ymax = i[0] , i[1] , i[0]+i[2] , i[1]+i[3]
+        new_change_box.append([xmin,ymin,xmax,ymax])
 
 
     out = []
 
-    for change_check in new_change_box:
+    for change_check in change_box:
         for all_check in new_all_box:
-            c = [change_check[1],change_check[2],change_check[3],change_check[4]]
+            c = [change_check[0],change_check[1],change_check[2],change_check[3]]
             a = [all_check[1],all_check[2],all_check[3],all_check[4]]
             if checkIou(c,a) > 0.8:
                 out.append(all_check)
