@@ -34,7 +34,7 @@ def CalIou(all_box,change_box,size):
 
     out = []
 
-    for change_check in change_box:
+    for change_check in new_change_box:
         for all_check in new_all_box:
             c = [change_check[0],change_check[1],change_check[2],change_check[3]]
             a = [all_check[1],all_check[2],all_check[3],all_check[4]]
