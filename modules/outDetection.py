@@ -39,7 +39,7 @@ class outDetector():
 
             pred = self.model(cropped)
             pred = pred.argmax(dim=-1)
-            pred = pred.detach().cpu()
+            pred = pred.item()
             preds.append(pred)
         
         return preds
