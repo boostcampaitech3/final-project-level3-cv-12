@@ -13,7 +13,7 @@ from yolov5.utils.augmentations import letterbox
 
 def ramen_detect(im0s):
     weights = "/opt/ml/project/final-project-level3-cv-12/weights/ramen_best.pt"
-    device = torch.device("cpu")
+    device = torch.device("cuda")
     data = "/opt/ml/project/final-project-level3-cv-12/yolov5/data/ramen.yaml"
     model = DetectMultiBackend(weights, device=device, dnn=False, data=data, fp16=False)
     stride, names, pt = model.stride, model.names, model.pt
@@ -39,7 +39,7 @@ def ramen_detect(im0s):
     gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]
     
     
-    output = []
+    output = set()
 
     for i,det in enumerate(pred):
         if len(det):
@@ -58,7 +58,8 @@ def ramen_detect(im0s):
                     _w *= width
                     _h *= height
 
-                    output.append([int(_x), int(_y), int(_w), int(_h)])
+                    # output.append((int(_x), int(_y), int(_w), int(_h)))
+                    output.add((int(_x), int(_y), int(_w), int(_h)))
 
     return output
 
