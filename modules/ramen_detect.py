@@ -41,7 +41,7 @@ class Ramen:
         gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]
         
         
-        output = []
+        output = set()
 
         for i,det in enumerate(pred):
             if len(det):
@@ -60,6 +60,6 @@ class Ramen:
                         _w *= width
                         _h *= height
 
-                        output.append((int(_x), int(_y), int(_w), int(_h)))
+                        output.add((int(_x), int(_y), int(_w), int(_h)))
 
         return output
