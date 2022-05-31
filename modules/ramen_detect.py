@@ -13,7 +13,7 @@ from yolov5.utils.augmentations import letterbox
 
 class Ramen:
     def __init__(self):
-        weights = "/opt/ml/project/final-project-level3-cv-12/weights/best.pt"
+        weights = "/opt/ml/project/final-project-level3-cv-12/weights/ramen_best.pt"
         self.device = torch.device("cuda")  
         self.model = DetectMultiBackend(weights, device=self.device, dnn=False, fp16=False)
         self.stride, self.names, self.pt = self.model.stride, self.model.names, self.model.pt    
@@ -22,7 +22,7 @@ class Ramen:
         
         height, width = im0s.shape[:2]
 
-        imgsz = check_img_size((1440,1440), s=self.stride)
+        imgsz = check_img_size((2000,2000), s=self.stride)
 
         img = letterbox(im0s, imgsz, stride=self.stride, auto=True)[0]
         img = img.transpose((2,0,1))[::-1]
