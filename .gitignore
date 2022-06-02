@@ -13,4 +13,4 @@ weights
 !weights/.gitkeep
 *.pt
 *.jpg
-*/__pycache__
+*/__pycache__/

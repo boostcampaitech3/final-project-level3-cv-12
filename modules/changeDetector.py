@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import imutils
 from skimage.metrics import structural_similarity as compare_ssim
 
 
@@ -13,12 +12,13 @@ def get_diff(before_img, after_img):
 
     thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
     kernel = np.ones((3,3),np.uint8)
+    # opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=5)
     erosion = cv2.erode(thresh, kernel, iterations = 20)
     dilation = cv2.dilate(erosion, kernel, iterations = 15)
     return dilation
 
 
-def detectChange(before_img, after_img, before_bboxes, after_bboxes, threshold=50):
+def detectChange(before_img, after_img, before_bboxes, after_bboxes, threshold=100):
     before_changed = []
     before_scores = []
     after_changed = []

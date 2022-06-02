@@ -22,7 +22,7 @@ class Ramen:
         
         height, width = im0s.shape[:2]
 
-        imgsz = check_img_size((2000,2000), s=self.stride)
+        imgsz = check_img_size((2048,2048), s=self.stride)
 
         img = letterbox(im0s, imgsz, stride=self.stride, auto=True)[0]
         img = img.transpose((2,0,1))[::-1]
