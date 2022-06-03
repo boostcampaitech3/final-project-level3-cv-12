@@ -4,29 +4,30 @@ import streamlit as st
 
 
 def write_info(num, slot, label=None):
-    label = '##### '+str(num)
-    if num == 2:
+    label = '##### '+str(int(num))+'%'
+    if num >= 100:
         slot.success(label)
-    elif num == 1 or num == 0:
+    elif num >= 80:
         slot.info(label)
-    elif num == -1:
+    elif num >= 50:
         slot.warning(label)
-    elif num < -1:
-        slot.error(label)
     else:
-        slot.write(label)
-
+        slot.error(label)
+    
 
 def show_table(f_name):
-    status_df = pd.read_csv(f_name)
+    status_df = pd.read_csv(f_name, names=['product', 'base', 'diff'])[1:]
+    status_df[['base', 'diff']] = status_df[['base', 'diff']].astype(int)
+    status_df['status'] = (status_df['base'] + status_df['diff']) / status_df['base'] * 100
+    status_df = status_df.sort_values('status').reset_index(drop=True)
     for idx, row in status_df.iterrows():
         lines[2 * idx].write('------------')
         col1, col2, col3 = lines[2 * idx + 1].columns((1, 3, 1))
 
         col1.write('#### ' + str(idx)) 
-        col2.write('#### ' + row['Product'])  
-        write_info(row['Status'], col3)
-
+        col2.write('#### ' + row['product'])  
+        write_info(row['status'], col3)
+        
 
 # table format
 # status_df = pd.DataFrame([
@@ -47,9 +48,9 @@ fields = ["Idx", 'Product', 'Status']
 for col, field_name in zip(colms, fields):
     col.write('#### ' + field_name)
 
-f_name = 'temp.csv'
-status_df = pd.read_csv(f_name)
-lines = [st.empty() for _ in range(len(status_df) * 2 )]
+f_name = 'result.csv'
+status_df = pd.read_csv(f_name, names=['product', 'base', 'diff'])[1:]
+lines = [st.empty() for _ in range((len(status_df) + 1) * 2)]
 show_table(f_name)
 
 

@@ -18,7 +18,7 @@ class stockChecker():
         return ret
 
         
-    def check(self, before_img, after_img):
+    def check(self, before_img, after_img, is_topDown = True):
         before_bboxes = self.ramenDetector.ramen_detect(before_img)
         after_bboxes = self.ramenDetector.ramen_detect(after_img) 
         before_changed, before_scores, after_changed, after_scores = detectChange(before_img, after_img, before_bboxes, after_bboxes, threshold=50) 
@@ -33,7 +33,7 @@ class stockChecker():
                 out.add((before_bbox.pop(), 'zero'))#하나도 없는경우
             else:
                 status = check_status2(before_bbox, after_bbox, before_bboxes, after_bboxes) # -1: 빠짐, 0: 유지, 1: 추가
-
+                status = -status if is_topDown else status
                 if status < 0:
                     for bbox in before_bbox:
                         out.add((bbox, 'sub'))# 하나 빠지고 상품이 있는경우
