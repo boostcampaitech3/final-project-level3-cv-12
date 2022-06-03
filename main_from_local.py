@@ -1,6 +1,5 @@
 import cv2
-import warnings
-warnings.filterwarnings("ignore")
+from tqdm import tqdm
 
 from modules.model import stockChecker
 from modules.utils import *
@@ -20,11 +19,13 @@ if cap.isOpened():
     h = round(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS) 
     video = cv2.VideoWriter(f'output_{f_video}', fourcc, fps, (w, h))
-
+    
+    pbar = tqdm(total = cap.get(cv2.CAP_PROP_FRAME_COUNT))
     while True:
         ret, frame = cap.read()
         if not ret:
             break
+        pbar.update(1)
         is_human = stockchecker.check_human(frame)
         if is_human:
             video.write(frame)

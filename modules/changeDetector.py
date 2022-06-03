@@ -10,6 +10,10 @@ def get_diff(before_img, after_img):
     diff = np.where(diff < 0.6, 0, diff)
     diff = (diff * 255).astype("uint8")
 
+    if diff.std() < 10:
+        diff = 255-diff
+        return diff
+
     thresh = cv2.threshold(diff, 0, 255, cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU)[1]
     kernel = np.ones((3,3),np.uint8)
     # opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=5)
