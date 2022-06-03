@@ -1,4 +1,4 @@
-import random 
+import time
 import pandas as pd
 import streamlit as st
 
@@ -25,7 +25,8 @@ def show_table(f_name):
 
         col1.write('#### ' + str(idx)) 
         col2.write('#### ' + row['Product'])  
-        write_info(row['Status'] + random.randint(-1, 2), col3) ## 나중에 이 부분에서 random 부분 없애주시면됩니다.
+        write_info(row['Status'], col3)
+
 
 # table format
 # status_df = pd.DataFrame([
@@ -39,7 +40,6 @@ def show_table(f_name):
 # )
 
 _, col2 = st.columns((6, 1))
-refresh_button = col2.button('Refresh')
 title = st.empty()
 colms = title.columns((1, 3, 1))
 fields = ["Idx", 'Product', 'Status']
@@ -47,10 +47,12 @@ fields = ["Idx", 'Product', 'Status']
 for col, field_name in zip(colms, fields):
     col.write('#### ' + field_name)
 
-f_name = ('temp.csv')
+f_name = 'temp.csv'
 status_df = pd.read_csv(f_name)
 lines = [st.empty() for _ in range(len(status_df) * 2 )]
 show_table(f_name)
 
-if refresh_button:
+
+while True:
     show_table(f_name)
+    time.sleep(1)
