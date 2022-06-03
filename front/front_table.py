@@ -17,8 +17,8 @@ def write_info(num, slot, label=None):
         slot.write(label)
 
 
-def show_table():
-    status_df = pd.read_csv('temp.csv')
+def show_table(f_name):
+    status_df = pd.read_csv(f_name)
     for idx, row in status_df.iterrows():
         lines[2 * idx].write('------------')
         col1, col2, col3 = lines[2 * idx + 1].columns((1, 3, 1))
@@ -47,10 +47,10 @@ fields = ["Idx", 'Product', 'Status']
 for col, field_name in zip(colms, fields):
     col.write('#### ' + field_name)
 
-
-status_df = pd.read_csv('temp.csv')
+f_name = ('temp.csv')
+status_df = pd.read_csv(f_name)
 lines = [st.empty() for _ in range(len(status_df) * 2 )]
-show_table()
+show_table(f_name)
 
 if refresh_button:
-    show_table()
+    show_table(f_name)
