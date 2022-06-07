@@ -32,7 +32,8 @@ def detect(opt):
     cnt = 0
     flag = False
     fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-    out = cv2.VideoWriter(opt.output_name,fourcc,cap.get(cv2.CAP_PROP_FPS),(1440,1440))
+    int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    out = cv2.VideoWriter(opt.output_name,fourcc,cap.get(cv2.CAP_PROP_FPS),(int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)),int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))))
     for cnt in range(int(cap.get(cv2.CAP_PROP_FRAME_COUNT))):
         if cnt % 5 != 0:
             ret ,image = cap.read()
