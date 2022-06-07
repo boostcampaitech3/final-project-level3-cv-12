@@ -13,6 +13,7 @@ CV-12 TEAM YOLO
 ## 🕶️ 프로젝트 소개
 
 <img src="imgs/Untitled.png" width='300px'>
+
 - 재고파악 자동화 및 프로세스 효율화를 위한 Computer Vision 시스템
 - 모든 매장에서 매대 품목을 관리하는 시스템으로 사용할 수 있음
 
@@ -40,7 +41,6 @@ Python Video_test.py --video_name {TestVideo 경로} --output_name {Output Video
 
 ### 🤔 Model
 
-<!-- ![Untitled](imgs/Untitled1.png) -->
 <img src="imgs/Untitled1.png" width='300px'>
 
 | Task | Model | Performance |
