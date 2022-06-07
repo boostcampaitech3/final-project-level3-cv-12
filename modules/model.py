@@ -17,6 +17,11 @@ class stockChecker():
         ret = self.humanDetector.detect(img)
         return ret
 
+    def ramen_detect(self,img):
+        return self.ramenDetector.ramen_detect(img)
+
+    def ramen_class(self,img,bbox):
+        return self.classifier.get_label(img,bbox)   
         
     def check(self, before_img, after_img, is_topDown = True):
         before_bboxes = self.ramenDetector.ramen_detect(before_img)
@@ -28,16 +33,22 @@ class stockChecker():
         out = set()
         for before_bbox, after_bbox in iou_bboxes:
             if None in before_bbox:
-                out.add((after_bbox.pop(), 'new'))#하나도 없다가 생긴경우
+                check_bbox = after_bbox.pop()
+                label = self.classifier.get_label(after_img,[check_bbox])
+                out.add((check_bbox, label[0],'new'))#하나도 없다가 생긴경우
             elif None in after_bbox:
-                out.add((before_bbox.pop(), 'zero'))#하나도 없는경우
+                check_bbox = before_bbox.pop()
+                label = self.classifier.get_label(before_img,[check_bbox])
+                out.add((check_bbox,label[0], 'zero'))#하나도 없는경우
             else:
                 status = check_status2(before_bbox, after_bbox, before_bboxes, after_bboxes) # -1: 빠짐, 0: 유지, 1: 추가
                 status = -status if is_topDown else status
                 if status < 0:
                     for bbox in before_bbox:
-                        out.add((bbox, 'sub'))# 하나 빠지고 상품이 있는경우
+                        label = self.classifier.get_label(before_img,[bbox])
+                        out.add((bbox,label[0] ,'sub'))# 하나 빠지고 상품이 있는경우
                 elif status > 0:
                     for bbox in after_bbox:
-                        out.add((bbox, 'add'))# 상품이 있었는데 하나 추가된경우
+                        label = self.classifier.get_label(after_img,[bbox])
+                        out.add((bbox, label[0],'add'))# 상품이 있었는데 하나 추가된경우
         return out
