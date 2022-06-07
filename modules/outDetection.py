@@ -111,9 +111,6 @@ def check_status(before_bbox, after_bbox, before_bboxes, after_bboxes):
     d_left = (after_left_slope - before_left_slope) 
     d_right = (after_right_slope - before_right_slope)
     
-#     d_left = 0 if -0.05 < d_left < 0.05 else d_left
-#     d_right = 0 if -0.05 < d_right < 0.05 else d_right
-    
     prod = d_left - d_right
     return prod
 
@@ -127,9 +124,6 @@ def check_status2(before_bbox, after_bbox, before_bboxes, after_bboxes):
         d_left = (after_left_slope - before_left_slope) 
     if after_right_slope != None and before_right_slope != None:
         d_right = (after_right_slope - before_right_slope)
-    
-#     d_left = 0 if -0.05 < d_left < 0.05 else d_left
-#     d_right = 0 if -0.05 < d_right < 0.05 else d_right
     
     prod = d_left - d_right
     return prod
