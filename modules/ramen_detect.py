@@ -13,10 +13,12 @@ from yolov5.utils.augmentations import letterbox
 
 class Ramen:
     def __init__(self):
-        weights = "/opt/ml/project/final-project-level3-cv-12/weights/ramen_best.pt"
+        weights = "/opt/ml/project/final-project-level3-cv-12/weights/best.pt"
+        
         self.device = torch.device("cuda")  
         self.model = DetectMultiBackend(weights, device=self.device, dnn=False, fp16=False)
         self.stride, self.names, self.pt = self.model.stride, self.model.names, self.model.pt    
+        
 
     def ramen_detect(self, im0s):
         
