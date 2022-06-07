@@ -20,7 +20,7 @@ CV-12 TEAM YOLO
 ### 📺 Demo
 
 <p align="center">
-    <img src="imgs/demo.gif">
+    <img src="imgs/demo.gif" width = "600px">
 </p>
 
 [https://www.youtube.com/watch?v=wukjFmrvYi8](https://www.youtube.com/watch?v=wukjFmrvYi8)
