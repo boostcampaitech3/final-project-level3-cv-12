@@ -59,7 +59,7 @@ def detect(opt):
             check_image = image.copy()
             first = False
             ramen = pd.DataFrame(ramen).transpose()
-            # ramen.to_csv('/opt/ml/project/final-project-level3-cv-12/front/stock.csv')
+            # ramen.to_csv('front/stock.csv')
             
             
         if not human:
@@ -72,12 +72,14 @@ def detect(opt):
                 check_image = image.copy()
                 if bbox:
                     for (x,y,w,h) , label,state in bbox:
+                        if label not in ramen.index:
+                            continue
                         if state in ['sub','zero']:
                             ramen.loc[label,'diff'] -= 1
                         else:
                             ramen.loc[label,'diff'] += 1
                     image = annotate(image,bbox)
-                    ramen.to_csv('/opt/ml/project/final-project-level3-cv-12/front/stock.csv')
+                    ramen.to_csv('front/stock.csv')
                 human = False
                 
         image = cv2.cvtColor(image,cv2.COLOR_RGB2BGR)
