@@ -19,6 +19,10 @@ CV-12 TEAM YOLO
 
 ### 📺 Demo
 
+<p align="center">
+    <img src="src/demo.gif">
+</p>
+
 [https://www.youtube.com/watch?v=wukjFmrvYi8](https://www.youtube.com/watch?v=wukjFmrvYi8)
 
 ### 📝 Test
