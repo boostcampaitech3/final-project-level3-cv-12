@@ -52,3 +52,11 @@ python result_crop_image.py --folder_path {crop image 저장 폴더 경로} --im
 python inference.py --model_path {weight 파일 경로} --test_dir {test data 폴더 경로}
 ```
 <br>
+
+## 3. Results
+
+|model|augmentation|accuracy|loss|
+|---|---|---|---|
+|ResNet18| - |0.959|0.217|
+|ResNet18|Blur, Rotate|0.962|0.215|
+|ResNet50|Blur, Rotate|0.964|0.222|
