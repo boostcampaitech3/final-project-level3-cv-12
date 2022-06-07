@@ -67,7 +67,7 @@ def detect(opt):
             _, next_image = cap.read()
             flag = True
             if changeDetector.get_diff(image,next_image).mean() >= 0.95:
-                bbox= model_flow.check(check_image,image,is_topDown=True)
+                bbox= model_flow.check(check_image,image,is_topDown=opt.topdown)
                 check_image = image.copy()
                 if bbox:
                     for (x,y,w,h) , label,state in bbox:
@@ -92,5 +92,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--video_name',type = str)
     parser.add_argument('--output_name',type = str,default = "./output_test_stream_check.mp4")
+    parser.add_argument('--topdown',type=bool)
     opt = parser.parse_args()
     detect(opt)
