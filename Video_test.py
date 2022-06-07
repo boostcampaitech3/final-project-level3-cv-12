@@ -65,7 +65,6 @@ def detect(opt):
             human = model_flow.check_human(image)  # 
         if human and not model_flow.check_human(image):
             _, next_image = cap.read()
-            next_image = cv2.resize(next_image,(1440,1440))
             flag = True
             if changeDetector.get_diff(image,next_image).mean() >= 0.95:
                 bbox= model_flow.check(check_image,image,is_topDown=True)
