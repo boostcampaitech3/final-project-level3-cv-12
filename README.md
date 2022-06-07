@@ -28,7 +28,7 @@ CV-12 TEAM YOLO
 ### 📝 Test
 
 ```python
-Python Video_test.py --video_name {TestVideo 경로} --output_name {Output Video name}
+Python Video_test.py --video_name {TestVideo 경로} --output_name {Output Video name} --topdown {bool}
 ```
 
 ### 📁 Dataset
