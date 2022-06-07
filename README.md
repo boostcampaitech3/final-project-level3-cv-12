@@ -44,8 +44,8 @@ Python Video_test.py --video_name {TestVideo 경로} --output_name {Output Video
 - [Test_Video](https://drive.google.com/drive/folders/1bq-sye22NnQTo-bNx3IOmUKYyZrtXRLm?usp=sharing)
 
 ### Weight
-[YOLOv5](https://drive.google.com/file/d/1pmJZ_5UbWJcqj6xGYBRorGtYFkHIhrt8/view?usp=sharing) 
-[ResNet18](https://drive.google.com/file/d/1h1UMPfn0gm522343xg1XO2A6V4Veotjz/view?usp=sharing) 
+- [YOLOv5](https://drive.google.com/file/d/1pmJZ_5UbWJcqj6xGYBRorGtYFkHIhrt8/view?usp=sharing) 
+- [ResNet18](https://drive.google.com/file/d/1h1UMPfn0gm522343xg1XO2A6V4Veotjz/view?usp=sharing) 
 
 ### 🤔 Model
 
